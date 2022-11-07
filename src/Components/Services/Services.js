@@ -16,19 +16,6 @@ const Services = () => {
     return (
         <div>
             {
-                // allServices.map(service => <>
-                //     <p>{service.id}</p>
-                //     <br />
-                //     <p>{service.name}</p>
-                //     <br />
-                //     <img src={service.image} alt="" />
-                //     <br />
-                //     <p>{service.rating}</p>
-                //     <br />
-                //     <p>${service.price}</p>
-                //     <br />
-                //     <p>{service.description}</p>
-                // </>)
                 allServices.map(service => <>
                     <section className="dark:bg-gray-800 dark:text-gray-100">
                         <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-center">

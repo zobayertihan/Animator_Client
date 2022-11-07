@@ -8,7 +8,7 @@ const Header = () => {
             <div className="container flex justify-between h-16 mx-auto">
                 <div className="flex gap-4">
                     <img className='rounded-full' src={logo} alt="" />
-                    <Link className='flex items-center text-2xl'><h1>Animator</h1></Link>
+                    <Link to={'/'} className='flex items-center text-2xl'><h1>Animator</h1></Link>
                 </div>
                 <div className="items-center flex-shrink-0 hidden lg:flex">
                     <ul className="items-stretch hidden space-x-3 lg:flex">
