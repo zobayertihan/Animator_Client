@@ -13,16 +13,7 @@ const Header = () => {
                 <div className="items-center flex-shrink-0 hidden lg:flex">
                     <ul className="items-stretch hidden space-x-3 lg:flex">
                         <li className="flex">
-                            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">Link</a>
-                        </li>
-                        <li className="flex">
-                            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400">Link</a>
-                        </li>
-                        <li className="flex">
-                            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">Link</a>
-                        </li>
-                        <li className="flex">
-                            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">Link</a>
+                            <Link rel="noopener noreferrer" to={'/blog'} className="flex items-center px-4 -mb-1 dark:border-transparent">Blog</Link>
                         </li>
                     </ul>
                     <button className="px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Log in</button>
