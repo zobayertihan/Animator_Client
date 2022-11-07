@@ -6,7 +6,7 @@ const Header = () => {
     return (
         <header className="p-4 dark:bg-gray-800 dark:text-gray-100">
             <div className="container flex justify-between h-16 mx-auto">
-                <div className="flex">
+                <div className="flex gap-4">
                     <img className='rounded-full' src={logo} alt="" />
                     <Link className='flex items-center text-2xl'><h1>Animator</h1></Link>
                 </div>
