@@ -38,7 +38,7 @@ const Login = () => {
         <div className="hero w-full my-20">
             <div className="hero-content grid gap-20 md:grid-cols-2 flex-col lg:flex-row">
                 <div className="text-center lg:text-left">
-                    <div className='container h-96' ref={container}>
+                    <div className='container' ref={container}>
 
                     </div>
                 </div>

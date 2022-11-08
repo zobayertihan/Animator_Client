@@ -43,7 +43,7 @@ const SignUp = () => {
     return (
         <div className="hero w-full my-20">
             <div className="hero-content grid gap-20 md:grid-cols-2 flex-col lg:flex-row">
-                <div className='container h-96' ref={container}>
+                <div className='container' ref={container}>
 
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
