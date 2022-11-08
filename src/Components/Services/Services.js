@@ -10,7 +10,7 @@ const Services = () => {
     return (
         <div>
             {
-                services.map(service => <div key={service.id}>
+                services.map(service => <div key={service._id}>
                     <section className="dark:bg-gray-800 dark:text-gray-100">
                         <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-12 lg:flex-row lg:justify-center">
                             <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
