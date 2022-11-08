@@ -5,7 +5,7 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const SignUp = () => {
     const navigate = useNavigate();
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
 
     const container = useRef(null);
     useEffect(() => {
@@ -21,6 +21,16 @@ const SignUp = () => {
         };
     }, [])
 
+    const handleUpdateUserProfile = (name, photoUrl) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoUrl
+        }
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
+
     const handleSignUp = event => {
         event.preventDefault();
         const form = event.target;
@@ -33,6 +43,7 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                handleUpdateUserProfile(name, photoURL);
                 navigate('/');
             })
             .catch(e => console.error(e))

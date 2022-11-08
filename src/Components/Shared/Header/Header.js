@@ -5,7 +5,6 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
-    console.log(user);
     const handleSignOut = () => {
         logOut()
             .then()
@@ -24,7 +23,7 @@ const Header = () => {
                             user?.email ?
                                 <>
                                     <li className="flex">
-                                        <Link rel="noopener noreferrer" to={'/blog'} className="flex items-center px-4 -mb-1 dark:border-transparent">My Reviews</Link>
+                                        <Link rel="noopener noreferrer" to={'/myreviews'} className="flex items-center px-4 -mb-1 dark:border-transparent">My Reviews</Link>
                                     </li>
                                     <li className="flex">
                                         <Link rel="noopener noreferrer" to={'/addService'} className="flex items-center px-4 -mb-1 dark:border-transparent">Add Service</Link>
