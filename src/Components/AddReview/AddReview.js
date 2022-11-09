@@ -3,6 +3,10 @@ import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 
 const AddReview = () => {
+    const date = new Date().toLocaleDateString();
+    const time = new Date().toLocaleTimeString();
+    const reviewTime = `${date} ${time}`
+
     const { user } = useContext(AuthContext)
     const service = useLoaderData();
     console.log(service._id)
@@ -15,8 +19,11 @@ const AddReview = () => {
         const description = form.description.value;
 
         const review = {
+            reviewTime,
             ServiceId: service._id,
+            ServiceName: service.name,
             userEmail: user.email,
+            image: user.photoURL,
             name,
             rating,
             description

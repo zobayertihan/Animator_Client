@@ -2,9 +2,11 @@ import Lottie from 'lottie-web';
 import React, { useContext, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import { FcGoogle } from "react-icons/fc";
+
 
 const Login = () => {
-    const { login } = useContext(AuthContext);
+    const { login, googleSignIn } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
@@ -14,6 +16,15 @@ const Login = () => {
         const email = form.email.value;
         const pass = form.pass.value;
         login(email, pass)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate(from, { replace: true });
+            })
+            .catch(e => console.error(e))
+    }
+    const handleGoogleSignIn = () => {
+        googleSignIn()
             .then(result => {
                 const user = result.user;
                 console.log(user);
@@ -65,6 +76,9 @@ const Login = () => {
                         </div>
                     </form>
                     <p className='text-center p-2'>Don't have an account? <Link to='/signup' className='text-orange-600 font-semibold'>Sign Up</Link></p>
+                    <div className='flex items-center justify-center my-5'>
+                        <button className='text-center' onClick={handleGoogleSignIn}><FcGoogle className='w-12 h-12 rounded' /></button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -33,7 +33,7 @@ const Services = () => {
                                     <p>{service.rating}</p>
                                 </div>
                                 <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-center">
-                                    <Link to={`/services/${service._id}`} className='btn btn-ghost'>Details</Link>
+                                    <Link to={`/services/${service._id}`} className='btn btn-outline btn-ghost'>Details</Link>
                                 </div>
                             </div>
                         </div>

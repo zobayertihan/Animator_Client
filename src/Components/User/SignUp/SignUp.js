@@ -1,11 +1,13 @@
 import Lottie from 'lottie-web';
 import React, { useContext, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { FcGoogle } from "react-icons/fc";
+
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const SignUp = () => {
     const navigate = useNavigate();
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const { createUser, updateUserProfile, googleSignIn } = useContext(AuthContext);
 
     const container = useRef(null);
     useEffect(() => {
@@ -49,11 +51,15 @@ const SignUp = () => {
             .catch(e => console.error(e))
 
     }
-    // const handleGoogleSignIn = () => {
-    //     googleSignIn()
-    //         .then()
-    //         .catch(e => console.error(e))
-    // }
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate('/');
+            })
+            .catch(e => console.error(e))
+    }
     return (
         <div className="hero w-full my-20">
             <div className="hero-content grid gap-20 md:grid-cols-2 flex-col lg:flex-row">
@@ -92,8 +98,11 @@ const SignUp = () => {
                         </div>
                     </form>
                     <p className='text-center p-2'>Already have an account? <Link to='/login' className='text-orange-600 font-semibold'>Login</Link></p>
+                    <div className='flex items-center justify-center my-5'>
+                        <button className='' onClick={handleGoogleSignIn}><FcGoogle className='w-12 h-12 rounded' /></button>
+                    </div>
                 </div>
-                {/* <button onClick={handleGoogleSignIn}>Sign Up With Google</button> */}
+
             </div>
         </div>
     );

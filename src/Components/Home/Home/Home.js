@@ -13,7 +13,7 @@ const Home = () => {
             <Slider></Slider>
             {
                 services1.slice(0, 3).map(service =>
-                    <div>
+                    <div key={service._id}>
                         <section className="dark:bg-gray-800 dark:text-gray-100">
                             <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-12 lg:flex-row lg:justify-center">
                                 <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
@@ -35,6 +35,9 @@ const Home = () => {
                                         <p>$ {service.price}</p>
                                         <p>{service.rating}</p>
                                     </div>
+                                    <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-center">
+                                        <Link to={`/services/${service._id}`} className='btn btn-outline btn-ghost'>Details</Link>
+                                    </div>
                                 </div>
                             </div>
                         </section>
@@ -42,7 +45,7 @@ const Home = () => {
                 )
             }
             <div className='flex justify-center items-center'>
-                < Link to={'/services'}><button className='btn btn-ghost'>See All</button></Link>
+                < Link to={'/services'}><button className='btn btn-outline btn-ghost'>See All</button></Link>
             </div>
         </div>
     );
