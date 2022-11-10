@@ -12,7 +12,7 @@ const Service = () => {
     console.log(service);
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews`, {
+        fetch(`https://animator-server.vercel.app/reviews`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('animator-user-token')}`
             }
@@ -69,6 +69,7 @@ const Service = () => {
                                         </div>
                                     </div>
                                     <div>
+                                        <p>Rating: {review.rating}</p>
                                         <p className="text-sm dark:text-gray-400">{review.description}</p>
                                     </div>
                                 </div>

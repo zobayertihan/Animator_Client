@@ -25,7 +25,7 @@ const MyReviews = () => {
     }, [])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`, {
+        fetch(`https://animator-server.vercel.app/reviews?email=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('animator-user-token')}`,
                 'content-type': 'application/json'
@@ -39,11 +39,12 @@ const MyReviews = () => {
             })
             .then(data => setReviews(data))
     }, [user?.email, logOut])
-    const review = reviews.filter(r => r.userEmail === user?.email)
+    const review = reviews.filter(r => r.userEmail === user?.email);
+
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure, You want to delete this review');
         if (proceed) {
-            fetch(`http://localhost:5000/reviews/${id}`, {
+            fetch(`https://animator-server.vercel.app/reviews/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('animator-user-token')}`,
@@ -61,7 +62,9 @@ const MyReviews = () => {
                     console.log(data);
                     if (data.deletedCount > 0) {
                         toast.error('Review Removed');
+                        console.log(review)
                         const remaining = review.filter(rev => rev.ServiceId !== id);
+                        console.log(remaining)
                         setReviews(remaining);
                     }
                 })
@@ -85,7 +88,10 @@ const MyReviews = () => {
                                 </div>
                             </div>
                             <div>
-                                <h1>{review.ServiceName}</h1>
+                                <h1 className='text-xl'>Service: {review.ServiceName}</h1>
+                                <br />
+                                <p>Rating: {review.rating}</p>
+                                <br />
                                 <p className="text-sm dark:text-gray-400">{review.description}</p>
                             </div>
                             <div className='flex justify-between'>

@@ -21,7 +21,7 @@ const EditREview = () => {
             reviewTime
         }
         console.log(rating, description);
-        fetch(`http://localhost:5000/reviews/${data._id}`, {
+        fetch(`https://animator-server.vercel.app/reviews/${data._id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
