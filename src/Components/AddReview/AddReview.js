@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
+import Lottie from 'lottie-web';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
@@ -11,6 +12,19 @@ const AddReview = () => {
 
     const { user } = useContext(AuthContext)
     const service = useLoaderData();
+    const container = useRef(null);
+    useEffect(() => {
+        Lottie.loadAnimation({
+            container: container.current,
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            animationData: require('../Assets/userRating.json'),
+        });
+        return () => {
+            Lottie.destroy();
+        };
+    }, [])
     useTitle(`${service.name}- Add review`);
     console.log(service._id)
     const navigate = useNavigate();
@@ -57,6 +71,9 @@ const AddReview = () => {
             <div className="hero-content flex-col lg:flex-row">
                 <div className="card flex-shrink-0 w-full max-w-2xl shadow-2xl bg-base-100">
                     <h1 className="text-5xl text-center font-bold p-12">Add a Review</h1>
+                    <div className='max-w-xl mx-auto' ref={container}>
+
+                    </div>
                     <form onSubmit={handleAddReview} className="card-body ">
                         <div className='grid grid-cols-2 gap-8'>
                             <div className="form-control">

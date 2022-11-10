@@ -11,7 +11,6 @@ const MyReviews = () => {
     const { user, logOut } = useContext(AuthContext);
     const [reviews, setReviews] = useState([]);
     const container1 = useRef(null);
-    const container2 = useRef(null);
     useEffect(() => {
         Lottie.loadAnimation({
             container: container1.current,
@@ -24,18 +23,7 @@ const MyReviews = () => {
             Lottie.destroy();
         };
     }, [])
-    useEffect(() => {
-        Lottie.loadAnimation({
-            container: container2.current,
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            animationData: require('../Assets/terms.json'),
-        });
-        return () => {
-            Lottie.destroy();
-        };
-    }, [])
+
     useEffect(() => {
         fetch(`http://localhost:5000/reviews?email=${user?.email}`, {
             headers: {
@@ -82,7 +70,7 @@ const MyReviews = () => {
 
     return (
         <div>
-            <div ref={container1}>
+            <div className='max-w-xl mx-auto' ref={container1}>
 
             </div>
             {

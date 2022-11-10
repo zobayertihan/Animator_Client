@@ -1,3 +1,5 @@
+import Lottie from 'lottie-web';
+import { useEffect, useRef } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import useTitle from '../Hooks/useTitle';
@@ -6,6 +8,19 @@ const AddServices = () => {
     const date = new Date().toLocaleDateString();
     const time = new Date().toLocaleTimeString();
     useTitle('Add Service');
+    const container = useRef(null);
+    useEffect(() => {
+        Lottie.loadAnimation({
+            container: container.current,
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            animationData: require('../Assets/service.json'),
+        });
+        return () => {
+            Lottie.destroy();
+        };
+    }, [])
     const serviceTime = `${date} ${time}`
     const navigate = useNavigate();
     const handleAddService = event => {
@@ -49,6 +64,9 @@ const AddServices = () => {
             <div className="hero-content flex-col lg:flex-row">
                 <div className="card flex-shrink-0 w-full max-w-2xl shadow-2xl bg-base-100">
                     <h1 className="text-5xl text-center font-bold p-12">Add a Service</h1>
+                    <div className='max-w-xl mx-auto' ref={container}>
+
+                    </div>
                     <form onSubmit={handleAddService} className="card-body ">
                         <div className='grid grid-cols-2 gap-8'>
                             <div className="form-control">
