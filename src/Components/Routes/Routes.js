@@ -11,11 +11,13 @@ import MyReviews from "../MyReviews/MyReviews";
 import PrivateRoute from "./PrivateRoute";
 import EditREview from "../MyReviews/EditREview";
 import Blog from "../Blog/Blog";
+import ErrorPage from "../../../../../Assignment10/client/src/components/pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',

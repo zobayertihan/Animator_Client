@@ -10,6 +10,8 @@ const Service = () => {
     const service = useLoaderData();
     useTitle(service.name)
     console.log(service);
+    const [fill, setFill] = useState([]);
+    const [spinner, setSpinner] = useState(true);
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
         fetch(`https://animator-server.vercel.app/reviews`, {
@@ -18,10 +20,12 @@ const Service = () => {
             }
         })
             .then(res => res.json())
-            .then(data => setReviews(data))
-    }, [])
-    const review = reviews.filter(r => r.ServiceId === service._id)
-    console.log(review)
+            .then(data => {
+                const review = reviews.filter(r => r.ServiceId === service._id)
+                setFill(review);
+                setSpinner(false)
+            })
+    }, [reviews, service._id, spinner])
     return (
         <div>
             <section className="dark:bg-gray-800 dark:text-gray-100">
@@ -55,7 +59,7 @@ const Service = () => {
             </div>
             <div>
                 {
-                    review.map(review => <div key={review._id}>
+                    fill.map(review => <div key={review._id}>
                         {
 
 

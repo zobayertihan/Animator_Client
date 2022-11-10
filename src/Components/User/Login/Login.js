@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import { FcGoogle } from "react-icons/fc";
 import useTitle from '../../Hooks/useTitle';
+import JWT from '../../JWT/Jwt';
 
 
 const Login = () => {
@@ -20,23 +21,8 @@ const Login = () => {
         login(email, pass)
             .then(result => {
                 const user = result.user;
-                const currentUser = {
-                    email: user.email
-                }
-                console.log(currentUser);
-                fetch('https://animator-server.vercel.app/jwt', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(currentUser)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log(data);
-                        localStorage.setItem("animator-user-token", data.token);
-                        navigate(from, { replace: true });
-                    })
+                JWT(user)
+                navigate(from, { replace: true });
             })
             .catch(e => console.error(e))
     }
@@ -44,23 +30,8 @@ const Login = () => {
         googleSignIn()
             .then(result => {
                 const user = result.user;
-                const currentUser = {
-                    email: user.email
-                }
-                console.log(currentUser);
-                fetch('https://animator-server.vercel.app/jwt', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(currentUser)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log(data);
-                        localStorage.setItem("animator-user-token", data.token);
-                        navigate(from, { replace: true });
-                    })
+                JWT(user)
+                navigate(from, { replace: true });
             })
             .catch(e => console.error(e))
     }

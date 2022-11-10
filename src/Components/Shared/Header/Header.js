@@ -80,6 +80,9 @@ const Header = () => {
                                     :
                                     <>
                                         <li className="hover:text-violet-600 hover:underline hover:underline-offset-4 transition duration-700">
+                                            <NavLink className={({ isActive }) => isActive ? active : normal} to={'/services'}>Services</NavLink>
+                                        </li>
+                                        <li className="hover:text-violet-600 hover:underline hover:underline-offset-4 transition duration-700">
                                             <NavLink className={({ isActive }) => isActive ? active : normal} to={'/blog'}>Blog</NavLink>
                                         </li>
                                         <li className="hover:text-violet-600 hover:underline hover:underline-offset-4 transition duration-700">
