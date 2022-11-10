@@ -1,5 +1,5 @@
 import Lottie from 'lottie-web';
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import { FcGoogle } from "react-icons/fc";
@@ -11,6 +11,7 @@ const Login = () => {
     const { login, googleSignIn } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
+    const [error, setError] = useState('');
     useTitle('Login');
     const from = location.state?.from?.pathname || '/';
     const handleLogin = event => {
@@ -24,7 +25,9 @@ const Login = () => {
                 JWT(user)
                 navigate(from, { replace: true });
             })
-            .catch(e => console.error(e))
+            .catch(e => {
+                setError(e.meeage);
+            })
     }
     const handleGoogleSignIn = () => {
         googleSignIn()
@@ -33,7 +36,9 @@ const Login = () => {
                 JWT(user)
                 navigate(from, { replace: true });
             })
-            .catch(e => console.error(e))
+            .catch(e => {
+                setError(e.meeage);
+            })
     }
     const container = useRef(null);
     useEffect(() => {
@@ -71,7 +76,7 @@ const Login = () => {
                             </label>
                             <input type="password" name='pass' placeholder="password" className="input input-bordered" required />
                             <label className="label">
-                                <Link to="" className="label-text-alt link link-hover">Forgot password?</Link>
+                                {error}
                             </label>
                         </div>
                         <div className="form-control mt-6">

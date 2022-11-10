@@ -13,19 +13,12 @@ const Service = () => {
     const [spinner, setSpinner] = useState(true);
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
-        fetch(`https://animator-server.vercel.app/reviews`, {
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('animator-user-token')}`
-            }
-        })
+        fetch(`https://animator-server.vercel.app/review`)
             .then(res => res.json())
             .then(data => {
                 setReviews(data);
-                // console.log(data)
-
                 if (reviews) {
                     const review = reviews.filter(r => r.ServiceId === service._id)
-                    // console.log(review)
                     setFill(review);
                     setSpinner(false);
                 }

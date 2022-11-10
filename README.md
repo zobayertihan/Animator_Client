@@ -10,3 +10,4 @@
 - Used React DOM
 - Used tailwind framework
 - Used different types of tailwind framework like: daisyui, mambaui 
+- Used JWT token for authorization.
