@@ -99,7 +99,7 @@ const Home = () => {
                         <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
                             <h1 className="text-3xl font-bold leading-none sm:text-6xl">Terms and Conditions
                             </h1>
-                            <p className="mt-6 mb-8 text-lg sm:mb-12">
+                            <div className="mt-6 mb-8 text-lg sm:mb-12">
                                 <ul>
                                     <li><h2>COPYRIGHT</h2> <br /> <p> The Company until all fees under 6 have been paid retain all copyright in the deliverable throughout the world to the extent permitted by law.</p> </li>
                                     <br />
@@ -107,7 +107,7 @@ const Home = () => {
                                         Half the Fee shall be paid on or within 7 Days of Commissioner signing the Proposal.
                                         All such fees shall be paid within 14 Days.</p> </li>
                                 </ul>
-                            </p>
+                            </div>
                         </div>
                     </div>
                 </section>

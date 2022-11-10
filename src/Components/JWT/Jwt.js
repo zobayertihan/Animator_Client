@@ -3,7 +3,7 @@ const JWT = (user) => {
         email: user.email
     }
     console.log(currentUser);
-    fetch('http://localhost:5000/jwt', {
+    fetch('https://animator-server.vercel.app/jwt', {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
@@ -13,7 +13,7 @@ const JWT = (user) => {
         .then(res => res.json())
         .then(data => {
             console.log(data);
-            localStorage.setItem("service-user-token", data.token);
+            localStorage.setItem("animator-user-token", data.token);
 
         })
 }

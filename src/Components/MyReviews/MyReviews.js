@@ -25,7 +25,7 @@ const MyReviews = () => {
     }, [])
 
     useEffect(() => {
-        fetch(`https://animator-server.vercel.app/reviews?email=${user?.email}`, {
+        fetch(`https://animator-server.vercel.app/reviews`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('animator-user-token')}`,
                 'content-type': 'application/json'

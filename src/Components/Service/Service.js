@@ -9,7 +9,6 @@ const Service = () => {
     const { user } = useContext(AuthContext)
     const service = useLoaderData();
     useTitle(service.name)
-    console.log(service);
     const [fill, setFill] = useState([]);
     const [spinner, setSpinner] = useState(true);
     const [reviews, setReviews] = useState([]);
@@ -21,9 +20,16 @@ const Service = () => {
         })
             .then(res => res.json())
             .then(data => {
-                const review = reviews.filter(r => r.ServiceId === service._id)
-                setFill(review);
-                setSpinner(false)
+                setReviews(data);
+                // console.log(data)
+
+                if (reviews) {
+                    const review = reviews.filter(r => r.ServiceId === service._id)
+                    // console.log(review)
+                    setFill(review);
+                    setSpinner(false);
+                }
+
             })
     }, [reviews, service._id, spinner])
     return (
