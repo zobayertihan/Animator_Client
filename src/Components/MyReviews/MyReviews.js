@@ -1,4 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import Lottie from 'lottie-web';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import toast from 'react-hot-toast';
 import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
@@ -8,6 +10,32 @@ const MyReviews = () => {
     useTitle('My reviews');
     const { user, logOut } = useContext(AuthContext);
     const [reviews, setReviews] = useState([]);
+    const container1 = useRef(null);
+    const container2 = useRef(null);
+    useEffect(() => {
+        Lottie.loadAnimation({
+            container: container1.current,
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            animationData: require('../Assets/review.json'),
+        });
+        return () => {
+            Lottie.destroy();
+        };
+    }, [])
+    useEffect(() => {
+        Lottie.loadAnimation({
+            container: container2.current,
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            animationData: require('../Assets/terms.json'),
+        });
+        return () => {
+            Lottie.destroy();
+        };
+    }, [])
     useEffect(() => {
         fetch(`http://localhost:5000/reviews?email=${user?.email}`, {
             headers: {
@@ -44,7 +72,7 @@ const MyReviews = () => {
                 .then(data => {
                     console.log(data);
                     if (data.deletedCount > 0) {
-                        alert('Review Removed');
+                        toast.error('Review Removed');
                         const remaining = review.filter(rev => rev.ServiceId !== id);
                         setReviews(remaining);
                     }
@@ -54,6 +82,9 @@ const MyReviews = () => {
 
     return (
         <div>
+            <div ref={container1}>
+
+            </div>
             {
                 review.map(review => <div className='max-w-lg mx-auto' key={review._id}>
                     {
@@ -78,6 +109,7 @@ const MyReviews = () => {
                 </div>)
             }
         </div>
+
     );
 };
 

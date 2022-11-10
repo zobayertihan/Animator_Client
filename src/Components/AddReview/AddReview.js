@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 import useTitle from '../Hooks/useTitle';
@@ -8,7 +9,7 @@ const AddReview = () => {
     const time = new Date().toLocaleTimeString();
     const reviewTime = `${date} ${time}`
 
-    const { user, logOut } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     const service = useLoaderData();
     useTitle(`${service.name}- Add review`);
     console.log(service._id)
@@ -43,7 +44,7 @@ const AddReview = () => {
             .then(data => {
                 console.log(data);
                 if (data.acknowledged) {
-                    alert('Review Added');
+                    toast.success('Review Added')
                     form.reset();
                     navigate(`/services/${service._id}`)
                 }
