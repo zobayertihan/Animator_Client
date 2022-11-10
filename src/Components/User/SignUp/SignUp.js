@@ -4,9 +4,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FcGoogle } from "react-icons/fc";
 
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import useTitle from '../../Hooks/useTitle';
 
 const SignUp = () => {
     const navigate = useNavigate();
+    useTitle('Sign Up')
     const { createUser, updateUserProfile, googleSignIn } = useContext(AuthContext);
 
     const container = useRef(null);

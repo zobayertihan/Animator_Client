@@ -1,14 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
+import useTitle from '../Hooks/useTitle';
 
 const AddReview = () => {
     const date = new Date().toLocaleDateString();
     const time = new Date().toLocaleTimeString();
     const reviewTime = `${date} ${time}`
 
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
     const service = useLoaderData();
+    useTitle(`${service.name}- Add review`);
     console.log(service._id)
     const navigate = useNavigate();
     const handleAddReview = (event) => {

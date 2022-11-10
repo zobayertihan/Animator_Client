@@ -1,18 +1,18 @@
 import React from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link, useLoaderData } from 'react-router-dom';
+import useTitle from '../../Hooks/useTitle';
 import Services from '../../Services/Services';
 import Slider from '../Slider/Slider';
 
 const Home = () => {
-    const services = useLoaderData()
-    const services1 = services.sort(services.price)
-    console.log(services1);
+    const services = useLoaderData();
+    useTitle('Home')
     return (
         <div className=''>
             <Slider></Slider>
             {
-                services1.slice(0, 3).map(service =>
+                services.slice(0, 3).map(service =>
                     <div key={service._id}>
                         <section className="dark:bg-gray-800 dark:text-gray-100">
                             <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-12 lg:flex-row lg:justify-center">

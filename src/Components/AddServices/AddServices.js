@@ -1,6 +1,11 @@
 import { useNavigate } from 'react-router-dom';
+import useTitle from '../Hooks/useTitle';
 
 const AddServices = () => {
+    const date = new Date().toLocaleDateString();
+    const time = new Date().toLocaleTimeString();
+    useTitle('Add Service');
+    const serviceTime = `${date} ${time}`
     const navigate = useNavigate();
     const handleAddService = event => {
         event.preventDefault();
@@ -16,7 +21,8 @@ const AddServices = () => {
             image,
             price,
             rating,
-            description
+            description,
+            serviceTime
         }
 
         fetch('http://localhost:5000/services', {

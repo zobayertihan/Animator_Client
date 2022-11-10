@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import useTitle from '../Hooks/useTitle';
 
 
 
 const Services = () => {
     const services = useLoaderData()
+    useTitle('Services')
     return (
         <div>
             {

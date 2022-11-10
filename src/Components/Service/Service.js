@@ -3,29 +3,23 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 import { FaUser } from 'react-icons/fa';
+import useTitle from '../Hooks/useTitle';
 
 const Service = () => {
     const { user } = useContext(AuthContext)
     const service = useLoaderData();
+    useTitle(service.name)
     console.log(service);
     const [reviews, setReviews] = useState([]);
-    // useEffect(() => {
-    //     fetch(`http://localhost:5000/reviews?email=${user?.email}`)
-    //         .then(res => res.json())
-    //         .then(data => setReviews(data))
-    // }, [user?.email])
     useEffect(() => {
-        // fetch(`http://localhost:5000/reviews?ServiceId=${service?._id}`)
-        fetch(`http://localhost:5000/reviews`)
+        fetch(`http://localhost:5000/reviews`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('animator-user-token')}`
+            }
+        })
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])
-
-
-
-    // const rev = reviews.sort((a, b) => b.date - a.date);
-    // console.log(rev[0])
-    // console.log(reviews[0].date)
     const review = reviews.filter(r => r.ServiceId === service._id)
     console.log(review)
     return (
@@ -59,12 +53,6 @@ const Service = () => {
             <div className='flex justify-center'>
                 <Link className='btn btn-outline btn-ghost p-5' to={`/services/${service._id}/review`}>Add review</Link>
             </div>
-            {/* <div>
-                {
-                
-
-                }
-            </div> */}
             <div>
                 {
                     review.map(review => <div key={review._id}>

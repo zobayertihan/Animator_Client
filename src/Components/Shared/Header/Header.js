@@ -23,6 +23,9 @@ const Header = () => {
                             user?.email ?
                                 <>
                                     <li className="flex">
+                                        <Link rel="noopener noreferrer" to={'/services'} className="flex items-center px-4 -mb-1 dark:border-transparent">Services</Link>
+                                    </li>
+                                    <li className="flex">
                                         <Link rel="noopener noreferrer" to={'/myreviews'} className="flex items-center px-4 -mb-1 dark:border-transparent">My Reviews</Link>
                                     </li>
                                     <li className="flex">
